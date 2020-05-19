@@ -39,7 +39,7 @@ class ScoreController extends Controller
 
         } else { // number of times a score was generated per day
 
-            $score = Score::select('score', DB::raw("COUNT(score) as count"), DB::raw("DAY(created_at) as day"))
+            $score = Score::select('score', DB::raw("COUNT(score) as count"), DB::raw("(created_at) as day"))
                 ->groupBy('score', DB::raw("DAY(created_at)"))->get();
 
             foreach ($score as $value) {
