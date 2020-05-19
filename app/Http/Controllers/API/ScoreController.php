@@ -43,7 +43,7 @@ class ScoreController extends Controller
                 ->groupBy('score', DB::raw("DAY(created_at)"))->get();
 
             foreach ($score as $value) {
-                $label[] = 'Score:' . $value['count'] . ' Day:' . Carbon::parse($value['day'])->englishDayOfWeek;
+                $label[] = 'Score:' . $value['count'] . ' Day:' . Carbon::parse($value['day'])->isoFormat('dddd h:mm:ss a');
                 $data[]  = $value['score'];
             }
 
